@@ -1,13 +1,14 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: ;
+    box-sizing: 0;
 }
 
 :root {
     --topbot: rgb(148, 141, 141);
     --border: rgb(34, 34, 34);
     --mainbg: rgb(50, 228, 183);
+    --bomb: rgb(204, 20, 20);
 }
 
 #site_header {
@@ -34,6 +35,10 @@
 
 .active {
     background-color: white;
+}
+
+.bomb {
+    background-color: var(--bomb);
 }
 
 .acqua {

@@ -27,7 +27,7 @@ function game() {
         //impostiamo le box da appendere
         const boxCreate = `<div class="box"> ${i} </div>`
         //inseriamo le box nel container
-        container.innerHTML += boxCreate 
+        container.innerHTML += boxCreate
     }
 }
 
@@ -48,8 +48,23 @@ function boxColor() {
 playBtn.addEventListener('click', function() {
     game()
     boxColor()
+    bombs()
 }    
 )
+
+function bombs() {
+    let difficultyInput = document.getElementById('difficulty').value
+    const max_value = setDifficulty(difficultyInput);
+    console.log(max_value);
+    const boxPosition = document.querySelectorAll('.box')
+    for (let i = 0; i < 16; i++) {
+        const bombPosition = Math.floor(Math.random() * (max_value - 1) + 1)
+        console.log(bombPosition);
+        console.log(boxPosition[i]);
+        
+    }
+
+}
 
 
 
