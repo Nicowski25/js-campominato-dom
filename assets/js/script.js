@@ -16,7 +16,7 @@ function setDifficulty(value) {
 }
 
 //creiamo la funzione onclick
-function game() {
+function gameGenerator() {
     //identifichiamo il form-select e prendiamo il valore che inserisce l'utente
     let difficultyInput = document.getElementById('difficulty').value
     const boxSize = setDifficulty(difficultyInput);
@@ -31,7 +31,7 @@ function game() {
     }
 }
 
-function boxColor() {
+function boxClick() {
     const box = document.querySelectorAll('.box')
     console.log(box);
     for (let i = 0; i < box.length; i++) {
@@ -45,26 +45,31 @@ function boxColor() {
     }
 }
 
-playBtn.addEventListener('click', function() {
-    game()
-    boxColor()
-    bombs()
-}    
-)
-
-function bombs() {
-    let difficultyInput = document.getElementById('difficulty').value
+function bombsGenerator() {
+    let difficultyInput = document.getElementById('difficulty').value;
     const max_value = setDifficulty(difficultyInput);
     console.log(max_value);
-    const boxPosition = document.querySelectorAll('.box')
-    for (let i = 0; i < 16; i++) {
-        const bombPosition = Math.floor(Math.random() * (max_value - 1) + 1)
-        console.log(bombPosition);
-        console.log(boxPosition[i]);
-        
+    const boxPosition = document.querySelectorAll('.box');
+    let bombs = [];
+    while (bombs.length < 16) {
+        let bombPosition = Math.floor(Math.random() * (max_value - 1) -1)
+        if (bombs.includes(bombPosition) ) {
+            continue
+        } else {
+            bombs.push(bombPosition)
+            console.log(bombPosition);
+        }
+        console.log(boxPosition[bombPosition]);
+        boxPosition[bombPosition].classList.add('bomb') 
     }
-
+    
 }
 
+playBtn.addEventListener('click', function() {
+    gameGenerator()
+    boxClick()
+    bombsGenerator()
+}    
+)
 
 
